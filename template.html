@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>GitHub Pages Overview</title>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --card-bg: #fff;
+      --text: #2d3748;
+      --muted: #718096;
+      --accent: #4a6fa5;
+      --accent-light: #e8eef6;
+      --border: #e2e8f0;
+      --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+      --shadow-hover: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1a202c;
+        --card-bg: #2d3748;
+        --text: #e2e8f0;
+        --muted: #a0aec0;
+        --accent: #7ba4d4;
+        --accent-light: #2a3a52;
+        --border: #4a5568;
+        --shadow: 0 1px 3px rgba(0,0,0,.2);
+        --shadow-hover: 0 4px 12px rgba(0,0,0,.3);
+      }
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 2rem 1rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    header {
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: .25rem;
+    }
+    header .meta {
+      font-size: .85rem;
+      color: var(--muted);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+    .card {
+      display: flex;
+      flex-direction: column;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      text-decoration: none;
+      color: var(--text);
+      box-shadow: var(--shadow);
+      transition: box-shadow .15s ease, border-color .15s ease;
+    }
+    .card:hover {
+      box-shadow: var(--shadow-hover);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: .4rem;
+      word-break: break-word;
+    }
+    .card p {
+      font-size: .85rem;
+      color: var(--muted);
+      flex: 1;
+      margin-bottom: .75rem;
+    }
+    .card .link {
+      font-size: .8rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+    footer {
+      margin-top: 2.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: .8rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>GitHub Pages</h1>
+    <div class="meta">{{COUNT}} sites &middot; Updated {{UPDATED}}</div>
+  </header>
+  <div class="grid">
+{{CARDS}}
+  </div>
+  <footer>Auto-generated weekly from GitHub API.</footer>
+</body>
+</html>
