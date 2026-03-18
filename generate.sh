@@ -6,7 +6,7 @@ OUTFILE="index.html"
 
 # Fetch all repos with pages enabled
 repos_json=$(gh api "/users/${OWNER}/repos?per_page=100&type=owner" \
-  --jq '[.[] | select(.has_pages == true) | {name: .name, description: (.description // ""), url: .html_url}] | sort_by(.name | ascii_downcase)')
+  --jq '[.[] | select(.has_pages == true and .name != "pages_overview") | {name: .name, description: (.description // ""), url: .html_url}] | sort_by(.name | ascii_downcase)')
 
 count=$(echo "$repos_json" | jq 'length')
 updated=$(date -u +"%Y-%m-%d")
@@ -34,9 +34,9 @@ echo "$repos_json" | jq -c '.[]' | while IFS= read -r repo; do
 done
 
 # Assemble final HTML: template head, cards, template tail
-head -n 109 template.html | sed "s/{{COUNT}}/${count}/; s/{{UPDATED}}/${updated}/" > "$OUTFILE"
+head -n 110 template.html | sed "s/{{COUNT}}/${count}/; s/{{UPDATED}}/${updated}/" > "$OUTFILE"
 cat "$cards_file" >> "$OUTFILE"
-tail -n +111 template.html >> "$OUTFILE"
+tail -n +112 template.html >> "$OUTFILE"
 
 rm -f "$cards_file"
 echo "Generated ${OUTFILE} with ${count} pages (${updated})"
